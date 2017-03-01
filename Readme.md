@@ -1,6 +1,6 @@
 # Lightning Components - what I have learned. #
 =
-The inheritence of components and the usage of interfaces is usually not explained at a greater detail 
+The inheritance of components and the usage of interfaces is usually not explained at a greater detail 
 when it comes to the majority of the samples we find as the google results are focussed on giving a basic idea.
 may be I am searching wrong. So am summarizing it here, please feel free to comment or clarify and I will update this doc accordingly.
 
