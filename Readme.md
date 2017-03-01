@@ -1,4 +1,4 @@
-# Lightning Components - what I have learned. #
+# Understanding pieces of Inheritance in Lightning Components #
 =
 The inheritance of components and the usage of interfaces is usually not explained at a greater detail 
 when it comes to the majority of the samples we find as the google results are focussed on giving a basic idea.
