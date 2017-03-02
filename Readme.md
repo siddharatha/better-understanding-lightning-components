@@ -9,6 +9,7 @@ References :
 * [Github repo for Scheduler](https://github.com/AutomaTom/scheduler)
 * [Reusable lightning components by John Belo](https://developer.salesforce.com/events/webinars/AdvLightning?d=7010M000001yCik)
 * [Interface reference](https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/ref_interfaces.htm)
+* [Aura Components not necessarily in lightning components](https://github.com/forcedotcom/aura/tree/master/aura-components/src/main/components/ui)
 
 understand usage of {!v.body}
 =
@@ -182,5 +183,21 @@ moreAdvSearchController.js
 })
 ```
 
+Interfaces
+=
+Interface at a high level helps us define a specific group of functionality that every component can chose to implement in its own way.
 
+ex: a quick action, if a component is implementing a force:lightningQuickAction or force:lightningQuickActionWithoutHeader , this enables us to configure custom quick actions. 
 
+```javascript
+$A.get("e.force:closeQuickAction");
+$A.get("e.force:closeQuickAction");
+```
+
+are available directly on the component controller/helper without registering them separately.
+
+These are advantages of using platform specific quick actions , but we also create our own interfaces.
+now hold on , you may ask why do we need to do that ?
+>They dont have any additional functionality other than attributes and registered events , we can as well have that code in our component.One of the biggest temptations of procedural programming.
+
+Lets dive into an example.

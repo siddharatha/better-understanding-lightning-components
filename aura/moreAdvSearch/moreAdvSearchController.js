@@ -1,5 +1,5 @@
 ({
-    doSearchTest : function(component, event, helper) {
-        component.getSuper().doSearch('baseHelperMethod',[component.getSuper()]);
-	}
-})
+  doSearchTest : function(component, event, helper) {
+    component.getSuper().doSearch('baseHelperMethod',[component.getSuper()]);
+  }
+});
