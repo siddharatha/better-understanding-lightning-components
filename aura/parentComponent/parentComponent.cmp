@@ -1,0 +1,5 @@
+<aura:component >
+    <h1>Parent Component</h1>
+    <c:moreAdvSearch />    
+    {!v.body}
+</aura:component>

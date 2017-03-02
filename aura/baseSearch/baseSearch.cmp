@@ -1,0 +1,9 @@
+<aura:component extensible="true" abstract="true">    
+    <aura:attribute name="searchString" type="String" default="" access="global"/>
+    <aura:attribute name="searchResults" type="Object[]" default="[]" access="global" />
+    <aura:method name="doSearch" action="{!c.doSearch}" access="public">
+        <aura:attribute name="name" type="String" />
+        <aura:attribute name="arguments" type="Object[]" />
+    </aura:method>
+    {!v.body}
+</aura:component>

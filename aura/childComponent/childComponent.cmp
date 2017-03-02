@@ -1,0 +1,3 @@
+<aura:component >
+	<h2>Child Component heading</h2>
+</aura:component>

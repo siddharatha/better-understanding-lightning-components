@@ -1,0 +1,6 @@
+<aura:component extends="c:advSearch">
+	<ui:button label="Search Advanced" press="{! c.doSearchTest }" />
+    <aura:iteration items="{!v.searchResults}" var="searchResult">
+        {!searchResult.a} - {!searchResult.c} <br />
+    </aura:iteration>    
+</aura:component>

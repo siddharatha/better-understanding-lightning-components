@@ -8,6 +8,7 @@ References :
 * [Reusable lightning components by AutomaTom](https://www.slideshare.net/thomaswaud/advanced-designs-for-reusable-lightning-components)
 * [Github repo for Scheduler](https://github.com/AutomaTom/scheduler)
 * [Reusable lightning components by John Belo](https://developer.salesforce.com/events/webinars/AdvLightning?d=7010M000001yCik)
+* [Interface reference](https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/ref_interfaces.htm)
 
 understand usage of {!v.body}
 =
@@ -38,7 +39,21 @@ TestApp.app
 > To see the definition of cmp2 , the cmp1 definiton should have a line at the end 
 {!v.body}
 
-the body of any components passed to it can be chosen to display in our own way, so its encapsulated as {!v.body}
+body attribute refers to the content which is wrapped inside a component.
+ex: 
+```html
+<cmp1>
+    Everything that is here is part of body attribute.
+</cmp1>
+```
+
+so in my component definition if i dont have the line 
+```html
+<aura:component>
+    <!-- {!v.body} -->
+</aura:component>
+```
+Anything wrapped inside will not be displayed.
 
 understanding aura:method
 =
@@ -60,17 +75,17 @@ extensible="true" abstract="true"
 =
 
 I am gonna have 3 components
-* baseSearchComponent
+* baseSearch
     * has searchstring and searchResults
     * orchestrates how the helper methods are called.    
-* advSearchComponent 
+* advSearch 
     * has one text box for searching
-    * implements the missing method from baseSearchComponent
-* moreAdvSearchComponent
+    * implements the missing method from baseSearch
+* moreAdvSearch
     * has one button to submit for searching
     * tries to call the search method which is shared with helpers.
 
-baseSearchComponent.cmp
+baseSearch.cmp
 ```html
 <aura:component extensible="true" abstract="true">
     <aura:attribute type="String" name="searchString" access="public" />
@@ -87,7 +102,7 @@ baseSearchComponent.cmp
 
 > [reference for javascript "apply"](https://msdn.microsoft.com/en-us/library/4zc42wh1(v=vs.94).aspx) 
 
-baseSearchComponentController.js
+baseSearchController.js
 ```javascript
 ({
     doSearch : function(component, event, helper) {
@@ -102,7 +117,7 @@ baseSearchComponentController.js
 })
 ```
 
-baseSearchComponentHelper.js
+baseSearchHelper.js
 ```javascript
 ({
     test:function(){
@@ -113,25 +128,25 @@ baseSearchComponentHelper.js
 })
 ```
 
-advSearchComponent.cmp
+advSearch.cmp
 ```html
 <aura:component extends="c:baseSearch" extensible="true">   
     <ui:inputText class="slds-input" value="{!v.searchString}" />
     {!v.body}
 </aura:component>
 ```
-advSearchComponentController.js
+advSearchController.js
 ```javascript
 ({
     //its empty
 })
 ```
 
-advSearchComponentHelper.js
+advSearchHelper.js
 ```javascript
 ({
     //the name baseHelperMethod is important for us to know which function to call from one of the children.
-    // since the baseSearchComponent is a abstract component this is where we implement the definition.
+    // since the baseSearch is a abstract component this is where we implement the definition.
 	baseHelperMethod : function(component) {
 		//instead of getting results ,am populating some dummy after 5 seconds.
         window.setTimeout(
@@ -145,9 +160,9 @@ advSearchComponentHelper.js
 })
 ```
 
-moreAdvSearchComponent.cmp
+moreAdvSearch.cmp
 ```html
-<aura:component extends="c:advSearchComponent">
+<aura:component extends="c:advSearch">
 	<ui:button label="Search Advanced" press="{! c.doSearchTest }" />
     <aura:iteration items="{!v.searchResults}" var="searchResult">
         {!searchResult.a} - {!searchResult.c} <br />
@@ -155,7 +170,7 @@ moreAdvSearchComponent.cmp
 </aura:component>
 ```
 
-moreAdvSearchComponentController.js
+moreAdvSearchController.js
 ```javascript
 ({
     doSearchTest : function(component, event, helper) {

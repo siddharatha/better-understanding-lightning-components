@@ -1,0 +1,4 @@
+<aura:component extends="c:baseSearch" extensible="true">   
+    <ui:inputText class="slds-input" value="{!v.searchString}" />
+    {!v.body}
+</aura:component>
