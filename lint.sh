@@ -1,1 +1,1 @@
-heroku lightning:lint ./aura/
+heroku lightning:lint ./package/aura/
